@@ -9,7 +9,7 @@ hooks:
       timeout: 900
       runas: root
 
-    - location: scripts/install_dependencies
+    - location: scripts/start_server
       timeout: 900
       runas: root
 
