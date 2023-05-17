@@ -13,7 +13,7 @@ phases:
    commands:
      - echo Build started on `date`
      - echo Installing composer deps
-     -  composer install
+     - composer install --no-interaction --prefer-dist --optimize-autoloader
      - php artisan cache:clear
 
  post_build:
