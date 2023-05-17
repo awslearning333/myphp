@@ -1,0 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: laravel
+    destination: /var/www/html/
+hooks:
+  AfterInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 900
+      runas: root
+
+
+    - location: scripts/apache_config.sh
+      timeout: 900
+      runas: root
+
+
+    - location: scripts/start_server.sh
+      timeout: 900
+      runas: root
+
+  ApplicationStop:      
+
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root    
