@@ -1,11 +1,24 @@
 version: 0.2
-
 phases:
-  post_build:
-    commands:
-      - echo "starting app"
+ install:
+   commands:
+     - curl -s https://getcomposer.org/installer | php
+     - mv  composer.phar /usr/local/bin/composer
+     - php --version
 
+
+ build:
+   commands:
+     - echo Build started on `date`
+     - echo Installing composer deps
+     - composer install
+     - php artisan cache:clear
+
+ post_build:
+   commands:
+     - echo Build completed on `date`
 artifacts:
   type: zip
   files:
     - '**/*'
+  name: clyde-$(date +%Y-%m-%d) 
