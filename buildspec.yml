@@ -2,8 +2,9 @@ version: 0.2
 phases:
  install:
    commands:
-     - curl -s https://getcomposer.org/installer | php
-     - mv  composer.phar /usr/local/bin/composer
+     - sudo curl -s https://getcomposer.org/installer | php
+     - sudo mv  composer.phar /usr/local/bin/composer
+     - sudo chmod +x /usr/local/bin/composer
      - php --version
 
 
@@ -11,12 +12,13 @@ phases:
    commands:
      - echo Build started on `date`
      - echo Installing composer deps
-     - composer install -vvv
+     - sudo ./usr/local/bin/composer
      - php artisan cache:clear
 
  post_build:
    commands:
      - echo Build completed on `date`
+     - cp -r laravel /var/www/html/
 artifacts:
   type: zip
   files:
